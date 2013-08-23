@@ -5,7 +5,7 @@ class CreateLists < ActiveRecord::Migration
       t.string :name
       t.timestamps
     end
-    add_index :name
+    add_index :lists, :name
  
     create_table :tasks do |t|
       t.belongs_to :list
@@ -13,7 +13,8 @@ class CreateLists < ActiveRecord::Migration
       t.integer :completed
       t.timestamps
     end
-    add_index :list,:completed
+    add_index :tasks, :list_id
+    add_index :tasks, :completed
   end
 end
 
